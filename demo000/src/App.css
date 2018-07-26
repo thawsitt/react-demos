@@ -2,7 +2,7 @@
   display: inline-block;
   width: 200px;
   border: 1px solid black;
-  margin-right: 20px;
+  margin: 10px;
 }
 
 .num-clicks {
@@ -11,4 +11,9 @@
 
 .btn-plus-one {
   margin: 5px 10px;
+}
+
+.source-info {
+  margin-top: 100px;
+  color: gray;
 }

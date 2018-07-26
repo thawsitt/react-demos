@@ -8,8 +8,7 @@ class Box extends PureComponent {
     return (
       <div className="Box">
         <h3>
-          Number of clicks:{' '}
-          <span className="num-clicks">{this.props.numClicks}</span>
+          Number of clicks: <span className="num-clicks">{this.props.numClicks}</span>
         </h3>
         <button className="btn-plus-one" onClick={this.props.onClick}>
           +1
@@ -40,14 +39,27 @@ class App extends Component {
     });
   }
 
+  addBox() {
+    this.setState({
+      numClicksArray: this.state.numClicksArray.concat([0]),
+    });
+  }
+
   render() {
     const boxes = this.state.numClicksArray.map((value, i) => (
       <Box key={i} onClick={() => this.handleClick(i)} numClicks={value} />
     ));
     return (
       <div>
+        <button onClick={() => this.addBox()}>Add Box</button>
         <h2>Total: {this.state.total}</h2>
         {boxes}
+        <div className="source-info">
+          View Source files{' '}
+          <a href="https://github.com/thawsitt/react-demos/tree/master/demo000" target="_blank">
+            here
+          </a>.
+        </div>
       </div>
     );
   }
