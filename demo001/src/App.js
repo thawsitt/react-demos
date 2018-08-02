@@ -13,10 +13,13 @@ class List extends React.Component {
 
   onSearchChange(event) {
     this.setState({
-      searchTerm: event.target.value,
+      searchTerm: event.target.value.toUpperCase(), //***
     });
   }
 
+  // Here, input is a controlled component.
+  // React's internal state is the single source of truth.
+  // You can verify it because all input becomes upper-cased.
   render() {
     const listItems = this.state.list
       .filter((item) => {
@@ -33,7 +36,7 @@ class List extends React.Component {
     return (
       <div>
         <form>
-          <input type="text" onChange={this.onSearchChange} />
+          <input type="text" value={this.state.searchTerm} onChange={this.onSearchChange} />
         </form>
         <ul>{listItems}</ul>
       </div>
@@ -77,6 +80,12 @@ class App extends Component {
     return (
       <div>
         <List list={this.names} />
+        <div className="source-info">
+          View Source files{' '}
+          <a href="https://github.com/thawsitt/react-demos/tree/master/demo001" target="_blank">
+            here
+          </a>.
+        </div>
       </div>
     );
   }
